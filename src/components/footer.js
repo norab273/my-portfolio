@@ -11,8 +11,7 @@ import { footerLinks } from "../../config";
 const StyledFooter = styled.footer`
   width: 100%;
   height: ${({ theme }) => theme.footerHeight};
-  background: ${({ theme, darkMode }) =>
-    darkMode ? theme.colors.background : theme.colors.primary};
+  background: #a5c5da;
   border-top: ${({ theme, darkMode }) =>
     darkMode ? `3px solid ${theme.colors.boxShadowHover}` : null};
   margin-top: 10rem;
