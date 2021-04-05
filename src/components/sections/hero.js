@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { motion, useAnimation } from "framer-motion";
 
@@ -22,11 +22,11 @@ const StyledContentWrapper = styled(ContentWrapper)`
   && {
     width: 100%;
     height: 100%;
-    min-height: 60vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 6rem;
+    margin-bottom: 0rem;
     @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
       margin-bottom: 4rem;
     }

@@ -37,7 +37,7 @@ const IndexPage = ({ data }) => {
         />
         <Hero content={data.hero.edges} />
         {/* Articles is populated via Medium RSS Feed fetch */}
-        { rssFeed && <Articles /> }
+        {rssFeed && <Articles />}
         <About content={data.about.edges} />
         <Interests content={data.interests.edges} />
         <Projects content={data.projects.edges} />
@@ -53,114 +53,127 @@ IndexPage.propTypes = {
 
 export default IndexPage;
 
-export const pageQuery = graphql`{
-  index: allMdx(filter: {fileAbsolutePath: {regex: "/index/index/"}}) {
-    edges {
-      node {
-        frontmatter {
-          seoTitle
-          useSeoTitleSuffix
-          useSplashScreen
-        }
-      }
-    }
-  }
-  hero: allMdx(filter: {fileAbsolutePath: {regex: "/index/hero/"}}) {
-    edges {
-      node {
-        body
-        frontmatter {
-          greetings
-          title
-          subtitlePrefix
-          subtitle
-          icon {
-            childImageSharp {
-              gatsbyImageData(width: 60, quality: 90, layout: CONSTRAINED)
-            }
+export const pageQuery = graphql`
+  {
+    index: allMdx(filter: { fileAbsolutePath: { regex: "/index/index/" } }) {
+      edges {
+        node {
+          frontmatter {
+            seoTitle
+            useSeoTitleSuffix
+            useSplashScreen
           }
         }
       }
     }
-  }
-  about: allMdx(filter: {fileAbsolutePath: {regex: "/index/about/"}}) {
-    edges {
-      node {
-        body
-        frontmatter {
-          title
-          image {
-            childImageSharp {
-              gatsbyImageData(width: 400, quality: 90, layout: CONSTRAINED)
-            }
-          }
-        }
-      }
-    }
-  }
-  interests: allMdx(filter: {fileAbsolutePath: {regex: "/index/interests/"}}) {
-    edges {
-      node {
-        exports {
-          shownItems
-          interests {
-            name
+    hero: allMdx(filter: { fileAbsolutePath: { regex: "/index/hero/" } }) {
+      edges {
+        node {
+          body
+          frontmatter {
+            greetings
+            title
+            subtitlePrefix
+            subtitle
             icon {
               childImageSharp {
-                gatsbyImageData(width: 20, height: 20, quality: 90, layout: FIXED)
+                gatsbyImageData(width: 60, quality: 90, layout: CONSTRAINED)
               }
             }
           }
         }
-        frontmatter {
-          title
-        }
       }
     }
-  }
-  projects: allMdx(
-    filter: {fileAbsolutePath: {regex: "/index/projects/"}, frontmatter: {visible: {eq: true}}}
-    sort: {fields: [frontmatter___position], order: ASC}
-  ) {
-    edges {
-      node {
-        body
-        frontmatter {
-          title
-          category
-          emoji
-          external
-          github
-          screenshot {
-            childImageSharp {
-              gatsbyImageData(width: 400, quality: 90, layout: CONSTRAINED)
-            }
-          }
-          tags
-          position
-          buttonVisible
-          buttonUrl
-          buttonText
-        }
-      }
-    }
-  }
-  contact: allMdx(filter: {fileAbsolutePath: {regex: "/index/contact/"}}) {
-    edges {
-      node {
-        body
-        frontmatter {
-          title
-          name
-          email
-          profileImage {
-            childImageSharp {
-              gatsbyImageData(width: 400, quality: 90, layout: CONSTRAINED)
+    about: allMdx(filter: { fileAbsolutePath: { regex: "/index/about/" } }) {
+      edges {
+        node {
+          body
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                gatsbyImageData(width: 400, quality: 90, layout: CONSTRAINED)
+              }
             }
           }
         }
       }
     }
+    interests: allMdx(
+      filter: { fileAbsolutePath: { regex: "/index/interests/" } }
+    ) {
+      edges {
+        node {
+          exports {
+            shownItems
+            interests {
+              name
+              icon {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 20
+                    height: 20
+                    quality: 90
+                    layout: FIXED
+                  )
+                }
+              }
+            }
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+    projects: allMdx(
+      filter: {
+        fileAbsolutePath: { regex: "/index/projects/" }
+        frontmatter: { visible: { eq: true } }
+      }
+      sort: { fields: [frontmatter___position], order: ASC }
+    ) {
+      edges {
+        node {
+          body
+          frontmatter {
+            title
+            category
+            emoji
+            external
+            github
+            screenshot {
+              childImageSharp {
+                gatsbyImageData(width: 400, quality: 90, layout: CONSTRAINED)
+              }
+            }
+            tags
+            position
+            buttonVisible
+            buttonUrl
+            buttonText
+          }
+        }
+      }
+    }
+    contact: allMdx(
+      filter: { fileAbsolutePath: { regex: "/index/contact/" } }
+    ) {
+      edges {
+        node {
+          body
+          frontmatter {
+            title
+            name
+            email
+            profileImage {
+              childImageSharp {
+                gatsbyImageData(width: 400, quality: 90, layout: CONSTRAINED)
+              }
+            }
+          }
+        }
+      }
+    }
   }
-}
 `;

@@ -1,7 +1,7 @@
 import React, { useRef, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { motion, useAnimation } from "framer-motion";
 

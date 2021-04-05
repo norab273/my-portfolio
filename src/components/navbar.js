@@ -47,8 +47,9 @@ const StyledNav = styled.nav`
     padding: 0.5rem 1.5rem;
     margin: 0;
     &:hover {
-      background: ${({ theme }) => theme.colors.primary};
+      background: #f8c000;
       color: ${({ theme }) => theme.colors.background};
+      border: none;
     }
   }
 `;
